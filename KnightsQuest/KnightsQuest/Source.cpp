@@ -5,9 +5,9 @@
 using namespace std;
 
 
-string startString = "\nTo create the grid, enter a number under 10 to determine the size or enter: ";
+string startString = "\n\nTo create the grid, enter a number under 10 to determine the size or enter: ";
 string& startS = startString;
-string errorString = "\nThe number has to be between 3 and 9 to create a valid grid, please try again: ";
+string errorString = "\nThe number has to be between 5 and 9 to create a valid grid, please try again: ";
 string& errorS = errorString;
 string errorString2 = "\nThe starting position has to be in the grid, please try again: ";
 string& errorS2 = errorString2;
@@ -31,10 +31,10 @@ int create(string startString) {
 	{
 		exit(0);
 	}
-	char *sizeC = &sizeChar;
-	cout << "The memory allocated to the size is located at " << &sizeC;
 	int size = sizeChar - '0';
-	if (size < MAXSIZE && size > 2) {
+	if (size < MAXSIZE && size > 4) {
+		char *sizeC = &sizeChar;
+		cout << "The memory allocated to the size is located at " << &sizeC;
 		cout << "\nThe size of your grid will be " << size << " x " << size;
 		cout << "\nAt which X coordinate do you want to start: ";
 		cin >> posX;
@@ -49,8 +49,8 @@ int create(string startString) {
 			exit(0);
 		}
 		if (size % 2 == 0 || size % 2 == 1 && (posX + posY) % 2 == 0) {
-
 			if (posX < size && posY < size) {
+				cout << "Calculating, this may take a couple of minutes depending on board size and starting position";
 				knightTour(size);
 			}
 			else {
